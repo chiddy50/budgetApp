@@ -41,5 +41,6 @@
       ".*\\.(vue)$": "vue-jest",
       "^.+\\.js$": "babel-jest"
     }
-  }
+  },
+  "engines" :{ "node" : ">=0.10.3 <0.12" } 
 }
