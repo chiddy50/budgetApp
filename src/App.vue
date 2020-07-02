@@ -15,6 +15,19 @@
         <router-link to="/test/12" tag="a">User 12</router-link>
       </li>
     </ul> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <router-link class="navbar-brand" to="/">Datakojo Testing</router-link>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item" v-for="(link, index) in nav_links" :class="{'active': isCurrent(link.to)}" :key="index">
+                    <router-link class="nav-link" :to="link.to">{{link.label}}</router-link>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <router-view></router-view>
   </div>
 </template>
@@ -23,8 +36,21 @@
 
 export default {
   name: 'App',
-  components: {
-   
+  data(){
+    return {
+      nav_links: [
+          {to: "/", label: "Home"} //,
+          // {to: "/template", label: "Template"},
+          // {to: "/gui", label: "GUI"}
+      ]
+    }
+  },
+  methods: {
+      isCurrent(nowPath) {
+          var current_path = location.href.split("#")[1];
+          return current_path === nowPath;
+      }
+      
   }
 }
 </script>
@@ -40,6 +66,10 @@ ul.nav {
   text-decoration: none;
   display: inline-block;
   margin-right: 10px;
+}
+
+button.btn.btn-default{
+  background: rgb(214, 200, 203);
 }
 
 </style>
