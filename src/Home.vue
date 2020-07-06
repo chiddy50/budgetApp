@@ -5,7 +5,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Form Config Title</label>
-                    <input type="text" class="form-control" v-model="name">
+                    <input type="text" class="form-control" v-model="title">
                 </div>
             </div>
         </div>
@@ -31,14 +31,13 @@ export default {
     data(){
         return {
             open: false,
-            name: "",
+            title: "",
             formData: null,
             id: "",
             storageForms: []
         }
     },
     components: {
-        // MyHome,
         // Cookie,
         FormBuilder
     },
@@ -46,32 +45,26 @@ export default {
         // setTimeout(() => {
         //     this.open = true
         // }, 6000);
-        this.getStorage()
     },
     methods: {
         saveForm(){
             let self = this;
             let data = {
-                user: self.name,
-                formData: self.formData
+                // user: self.formData._uniqueId,
+                user: 1,
+                title: self.title,
+                data: JSON.stringify(self.formData)
             }
-            console.log('Form name:  '+ this.name);
-            console.log('JSON data: ',JSON.stringify(data));         
-            
-            this.storageForms.push(data);
-            localStorage.setItem('formData', JSON.stringify(this.storageForms));
+            axios.post("http://isoraeosarenren.pythonanywhere.com/api/", data)
+            .then(response => {
+                console.log(response);                
+            })
+            .catch(err =>  console.log(err))
         },
         resetForm(){
             this.formData.type = "";
             this.formData.sections = [];
-        },
-        getStorage(){
-            if (localStorage.getItem('formData') === null) {
-                this.storageForms = [];
-            }else{
-                this.storageForms = JSON.parse(localStorage.getItem('formData'));
-            }
-        },
+        }
     }
 }
 </script>
