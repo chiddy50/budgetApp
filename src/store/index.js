@@ -50,7 +50,7 @@ export default new Vuex.Store({
     },
 
     SET_LIST(state){
-      state.itemList = JSON.parse(localStorage.getItem('itemList'))
+      state.itemList = JSON.parse(localStorage.getItem('itemList')) || []
     },
     
     EDIT_ITEM(state, payload){
