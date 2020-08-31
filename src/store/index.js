@@ -78,6 +78,9 @@ export default new Vuex.Store({
             'Your item has been deleted.',
             'success'
           )
+          localStorage.setItem('itemList', JSON.stringify(state.itemList))
+          this.commit("SET_EXPENSES");
+          this.commit("SET_BALANCE");
         }
       })
     }

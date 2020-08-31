@@ -128,9 +128,15 @@
     // #expense-amount,
     // #balance span,
     // #balance-amount,
+    .form__label,
     h5.list-item
     {
       font-size: 1rem;
+    }
+
+    .expense-title,
+    h5.expense-amount {
+      font-size: 0.7rem;
     }
   }
 

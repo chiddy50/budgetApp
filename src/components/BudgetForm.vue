@@ -4,7 +4,7 @@
         <div class="budget-feedback alert alert-danger text-capitalize">budget feedback</div>
         <!-- budget form -->
         <form @submit.prevent="submitBudget" class=" budget-form">
-            <h5 class="text-capitalize">please enter your budget</h5>
+            <h5 class="text-capitalize form__label">please enter your budget</h5>
             <div class="form-group">
                 <input type="number" class="form-control budget-input" @keyup="submitBudget" v-model="budget" id="budget-input">
             </div>

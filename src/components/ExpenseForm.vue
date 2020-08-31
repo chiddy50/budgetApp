@@ -4,11 +4,11 @@
         <div class="expense-feedback alert alert-danger text-capitalize">expense feedback</div>
         <!-- expense form -->
         <form @submit.prevent="submitExpense" class=" expense-form">
-            <h5 class="text-capitalize">please enter your expense</h5>
+            <h5 class="text-capitalize form__label">please enter your expense</h5>
             <div class="form-group">
                 <input type="text" class="form-control expense-input" v-model="name">
             </div>
-            <h5 class="text-capitalize">please enter expense amount</h5>
+            <h5 class="text-capitalize form__label">please enter expense amount</h5>
             <div class="form-group">
                 <input type="number" class="form-control expense-input" v-model="amount">
             </div>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
     name: 'expenseForm',
     data(){
@@ -37,6 +39,14 @@ export default {
     },
     methods: {
         submitExpense(){
+            if (this.name === "" || this.amount === "") {
+                Swal.fire(
+                    'Sorry!',
+                    'Fill all fields.',
+                    'error'
+                )
+                return
+            }
             let self = this
             this.$store.commit('SET_EXPENSE', this.$uuid.v1())
             self.name = ""
