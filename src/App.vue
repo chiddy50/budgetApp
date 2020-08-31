@@ -5,6 +5,9 @@
 				<div class="col-11 mx-auto pt-3">
 					<h3 class="text-uppercase mb-4">budget app</h3>
 					<div class="row">
+						<button class="btn btn-danger" @click="reset">Reset</button>
+					</div>
+					<div class="row">
 						<div class="col-md-5 my-3">
 							<budget-form></budget-form>
 						</div>
@@ -46,6 +49,11 @@ export default {
 		BalanceInfo,
 		ExpenseForm,
 		ExpenseList
+	},
+	methods: {
+		reset(){
+			this.$store.commit("RESET")
+		}
 	}
 }
 </script>

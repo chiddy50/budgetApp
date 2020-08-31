@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Swal from 'sweetalert2'
+import { bus } from '../main'
 
 Vue.use(Vuex)
 
@@ -83,6 +84,18 @@ export default new Vuex.Store({
           this.commit("SET_BALANCE");
         }
       })
+    },
+    RESET(state){
+
+      state.itemList = []
+      state.budgetAmount = null
+      state.balance = null
+      state.expenseName = null
+      state.expenseAmount = null
+      state.totalExpense = null
+      localStorage.removeItem('itemList')
+      localStorage.removeItem('budget')
+      bus.$emit('budgetChange', 0);
     }
   },
   actions: {

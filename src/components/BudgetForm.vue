@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { bus } from '../main'
 export default {
     name: 'budgetForm',
     data(){
@@ -23,7 +24,12 @@ export default {
         }
     },
     mounted(){
-        this.$store.commit("SET_BUDGET", this.budget)
+        let self = this
+        bus.$on('budgetChange', function () {
+            console.log("event emitted");
+            self.budget = 0
+        })
+        this.$store.commit("SET_BUDGET", this.budget);
     },  
     methods: {
         submitBudget(){

@@ -15,8 +15,8 @@ import UUID from "vue-uuid";
  
 Vue.use(UUID);
 Vue.config.productionTip = false
-// export const bus = new Vue();
-Vue.prototype.$bus =  new Vue();
+export const bus = new Vue();
+// Vue.prototype.$bus =  new Vue();
 
 new Vue({
   router,
