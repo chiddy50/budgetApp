@@ -116,6 +116,25 @@
   .showBlack {
     color: var(--mainDark);
   }
+
+  @media screen and (max-width: 468px) {
+    .info-title {
+      font-size: 1rem;
+    }
+
+    #budget span,
+    #budget-amount,
+    #expense span,
+    #expense-amount,
+    #balance span,
+    #balance-amount,
+    h5.list-item
+    {
+      font-size: 1rem;
+    }
+  }
+
+
   @media screen and (min-width: 992px) {
     .budget {
       font-size: 2rem; //2.6rem
